@@ -69,7 +69,7 @@ Possible improvements:
 - Statistics that shows user's quiz result histories. 
 
 ### How to launch application
-Clone the code: git clone https://github.com/RokasDie/cs50-final-project.git
-Paste to https://ide.cs50.io/
-Change directory to selfquiz and run "flask run"
-You are ready to go!
+1. Clone the code: git clone https://github.com/RokasDie/cs50-final-project.git
+2. Paste to https://ide.cs50.io/
+3. Change directory to selfquiz and run "flask run"
+4. You are ready to go!
