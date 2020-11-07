@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Remember
+{% endblock %}
+
+{% block main %}
+<div class="float-container">
+        <div class="login-wrap p-4 p-md-5">
+        <form action="/remember" method="post" id="startQuiz">
+          <div class="float-container2">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Select Quiz</th>
+                        <th scope="col">Quiz Category</th>
+                        <th scope="col">Quiz Name</th>
+                        <th scope="col">Questions</th>
+                        <th scope="col">Create Date</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {%if length > 0%}
+                            {%for index in range(length)%}
+                                <tr>
+                                    <td>
+                                      <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input quiz" id="customCheck{{ index }}" value="{{ quizID[index] }}">
+                                          <label class="custom-control-label" for="customCheck{{ index }}">{{ index + 1 }}</label>
+                                      </div>
+                                    </td>
+                                    <td name="quiz" value="{{ quizID[index] }}">{{ quiztype[index] }}</td>
+                                    <td>{{ quizes[index] }}</td>
+                                    <td>{{ questions[index] }}</td>
+                                    <td>{{ create_date[index] }}</td>
+                                    <td>
+                                        <button class="btn btn-info edit_quiz" type="button" name="action" value="{{index}}" disabled>Edit</button>
+                                        <button class="btn btn-danger delete_quiz" type="button" name="action" value="{{index}}">Delete</button>
+                                        <button class="btn btn-primary share_quiz" type="button" name="action" value="{{index}}">Share</button>
+                                    </td>
+                                </tr>
+                            {%endfor%}
+                        {%endif%}
+                    </tbody>
+                  </table>
+                  {%if length == 0%}
+                      <p>Please create Quizes.</p>
+                  {%endif%}
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3>Select a Quiz to remember or remember random questions!</h3>
+          <button class="btn btn-primary start_quiz" type="button" id="start_quiz">Start Random Quiz</button>
+          <input name="selected_quiz" id="selected_quiz" type="hidden" value="random">
+        </form>
+        </div>
+        {%if length > 0%}
+          {%for index in range(length)%}
+            <form action="/editquiz" method="post" id="editQuiz{{index}}">
+              <input name="quizID" type="hidden" value="{{ quizID[index] }}">
+            </form>
+            <form action="/deletequiz" method="post" id="deleteQuiz{{index}}">
+              <input name="quizID" type="hidden" value="{{ quizID[index] }}">
+            </form>
+            <form action="/sharequiz" method="post" id="shareQuiz{{index}}">
+              <input name="quizID" type="hidden" value="{{ quizID[index] }}">
+            </form>
+          {%endfor%}
+        {%endif%}
+
+</div>
+
+{% endblock %}

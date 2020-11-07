@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Test Yourself
+{% endblock %}
+
+{% block main %}
+<div class="float-container">
+        <div class="login-wrap p-4 p-md-5">
+          <div class="float-container2">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Quiz Category</th>
+                        <th scope="col">Quiz Name</th>
+                        <th scope="col">Questions</th>
+                        <th scope="col">Create Date</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {%if length > 0%}
+                            {%for index in range(length)%}
+                                <tr>
+                                    <td name="quiz" value="{{ quizID[index] }}">{{ quiztype[index] }}</td>
+                                    <td>{{ quizes[index] }}</td>
+                                    <td>{{ questions[index] }}</td>
+                                    <td>{{ create_date[index] }}</td>
+                                    <td>
+                                        <button class="btn btn-info start_quiz_button" type="button" name="action" value="{{index}}">Start</button>
+                                    </td>
+                                </tr>
+                            {%endfor%}
+                        {%endif%}
+                    </tbody>
+                  </table>
+                  {%if length == 0%}
+                      <p>Nobody shared quizes yet.</p>
+                  {%endif%}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%if length > 0%}
+          {%for index in range(length)%}
+            <form action="/test_yourself" method="post" id="startQuiz{{index}}">
+              <input name="quizID" type="hidden" value="{{ quizID[index] }}">
+            </form>
+          {%endfor%}
+        {%endif%}
+
+</div>
+
+{% endblock %}

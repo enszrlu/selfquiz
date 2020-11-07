@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Memento
+{% endblock %}
+
+{% block main %}
+<div class="float-container">
+        <div class="login-wrap p-4 p-md-5">
+        <form action="/save_editted_question" method="post" id="saveEdittedQuestion">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Question Category</th>
+                        <th scope="col">Question</th>
+                        <th scope="col">Answer</th>
+                        <th scope="col">Choice 1</th>
+                        <th scope="col">Choice 2</th>
+                        <th scope="col">Choice 3</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                          <td>{{ qtype }}</td>
+                          <td>{{ question }}</td>
+                          <td>{{ answer }}</td>
+                          <td>{{ choice1 }}</td>
+                          <td>{{ choice2 }}</td>
+                          <td>{{ choice3 }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <div class="colum-qtable">
+                    <h3>Question</h3>
+                    <input autocomplete="off" autofocus class="form-control" name="question" type="text" value="{{ question }}" height="150">
+                  </div>
+                  <div class="colum-qtable">
+                    <h3>Answer</h3>
+                    <input autocomplete="off" autofocus class="form-control" name="answer" type="text" value="{{ answer }}" height="150">
+                  </div>
+                  <div class="colum-qtable">
+                    <h3>Choice 1</h3>
+                    <input autocomplete="off" autofocus class="form-control" name="choice1" type="text" value="{{ choice1 }}" height="150">
+                  </div>
+                  <div class="colum-qtable">
+                    <h3>Choice 2</h3>
+                    <input autocomplete="off" autofocus class="form-control" name="choice2" type="text" value="{{ choice2 }}" height="150">
+                  </div>
+                  <div class="colum-qtable">
+                    <h3>Choice 3</h3>
+                    <input autocomplete="off" autofocus class="form-control" name="choice3" type="text" value="{{ choice3 }}" height="150">
+                  </div>
+                  <div class="colum-qtable">
+                    <h3>Question Category</h3>
+                    <select id="types" name="types" class="custom-select:valid:focus category">
+                                  {%for type in types%}
+                                      {%if type == types[0]%}
+                                          <option value="{{ type }}" selected>{{ type }}</option>
+                                      {%else%}
+                                          <option value="{{ type }}">{{ type }}</option>
+                                      {%endif%}
+                                  {%endfor%}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input name="questionID" type="hidden" value="{{ quest_id }}">
+            <button class="btn btn-primary save_question" type="button" id="save">Save Question</button>
+        </form>
+        </div>
+
+</div>
+
+{% endblock %}

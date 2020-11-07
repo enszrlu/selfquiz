@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Mementos
+{% endblock %}
+
+{% block main %}
+<div class="float-container">
+        <div class="login-wrap p-4 p-md-5">
+        <form action="/memento" method="post" id="createQuiz">
+          <div class="float-container2">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Select Questions for Quiz</th>
+                        <th scope="col">Question Category</th>
+                        <th scope="col">Question</th>
+                        <th scope="col">Answer</th>
+                        <th scope="col">Choice 1</th>
+                        <th scope="col">Choice 2</th>
+                        <th scope="col">Choice 3</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {%if length > 0%}
+                            {%for index in range(length)%}
+                                <tr>
+                                    <td>
+                                      <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input question" id="customCheck{{ index }}" value="{{ questID[index] }}">
+                                          <label class="custom-control-label" for="customCheck{{ index }}">{{ index + 1 }}</label>
+                                      </div>
+                                    </td>
+                                    <td name="question" value="{{ questID[index] }}">{{ questiontype[index] }}</td>
+                                    <td>{{ questions[index] }}</td>
+                                    {%for choice in choices[index]%}
+                                        <td>{{ choice }}</td>
+                                    {%endfor%}
+                                    {%for index in range(choices[index]|length, 4)%}
+                                        <td></td>
+                                    {%endfor%}
+                                    <td>
+                                        <button class="btn btn-info edit_question" type="button" name="action" value="{{index}}">Edit</button>
+                                        <button class="btn btn-danger delete_question" type="button" name="action" value="{{index}}">Delete</button>
+                                    </td>
+                                </tr>
+                            {%endfor%}
+                        {%endif%}
+                    </tbody>
+                  </table>
+                  {%if length == 0%}
+                      <p>Please save Mementos.</p>
+                  {%endif%}
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3>Select Min. 2 Questions to Create a Quiz!</h3>
+          <input autocomplete="off" autofocus name="quiz_name" type="text" value="My Quiz" placeholder="Quiz Name">
+          <button class="btn btn-primary create" type="button" id="create" disabled>Create Quiz</button>
+          <input name="question-list" id="question-list" type="hidden" value="">
+        </form>
+        </div>
+        {%if length > 0%}
+          {%for index in range(length)%}
+            <form action="/editmemento" method="post" id="editQuestion{{index}}">
+              <input name="questionID" type="hidden" value="{{ questID[index] }}">
+            </form>
+            <form action="/deletememento" method="post" id="deleteQuestion{{index}}">
+              <input name="questionID" type="hidden" value="{{ questID[index] }}">
+            </form>
+          {%endfor%}
+        {%endif%}
+
+</div>
+
+{% endblock %}
