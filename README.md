@@ -6,11 +6,12 @@ SelfQuiz is a website that you can write down questions to yourself and return r
 The project is a webpage where users can save questions and answers called mementos. Then, they can create their own quizes selecting multiple questions or test themself with questions they saved before to freshen up their knowledge. Also, they can share their quizes with users online so other users can use their quizes to test themself and vise versa. 
 
 ### Technologies used:
-JS
-sqlite3
-flask
-html
-css
+- JS
+- sqlite3
+- flask
+- html
+- css
+
 
 ### How the webpage works?
 The idea is simple. The user can register then start saving mementos for s/he to return and remember. Also, user can test herself with quizes other users created. 
@@ -28,9 +29,9 @@ During registration you need to enter these fields:
 User can login to account with username and password. 
 
 ### Homepage
-Left Side:
+#### Left Side:
   Form to create questions. User must enter at least a question, an answer and a choice. User also can enter up to three choices. User also needs to identify type of the question.(For example, Python, C#, Flask, General etc.)
-Right Side:
+#### Right Side:
   Quick remember section which consist of maximum 10 random questions that user created before. If user did not saved a memento before, this section will have a note. "Save Mementos and come back!"
 
 ### Mementos
@@ -60,12 +61,12 @@ As all applications this one can also be improved. Actually, this project is sto
 This was my very first website other than I have created for CS50 Web homeworks. I have learnt a lot and I can learn more with possible improvements.
 
 Possible improvements:
-  -Ability to change account details
-  -Like/Dislike public quizes
-  -Filter quizes by popularity, date created, type etc.
-  -Filter questions by type, date created
-  -Disable questions so they don't appear on random quizes. 
-  -Statistics that shows user's quiz result histories. 
+- Ability to change account details
+- Like/Dislike public quizes
+- Filter quizes by popularity, date created, type etc.
+- Filter questions by type, date created
+- Disable questions so they don't appear on random quizes. 
+- Statistics that shows user's quiz result histories. 
 
 ### How to launch application
 Clone the code: git clone https://github.com/RokasDie/cs50-final-project.git
