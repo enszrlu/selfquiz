@@ -67,6 +67,8 @@ Possible improvements:
 - Filter questions by type, date created
 - Disable questions so they don't appear on random quizes. 
 - Statistics that shows user's quiz result histories. 
+- Add friends and create common questions bank.
+- Share quizes with a specific user or a friend
 
 ### How to launch application
 1. Clone the code: https://github.com/enszrlu/selfquiz.git
