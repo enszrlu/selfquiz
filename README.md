@@ -69,7 +69,7 @@ Possible improvements:
 - Statistics that shows user's quiz result histories. 
 
 ### How to launch application
-1. Copy the code: https://github.com/enszrlu/selfquiz
+1. Clone the code: https://github.com/enszrlu/selfquiz.git
 2. Paste to https://ide.cs50.io/
 3. Change directory to selfquiz and run "flask run"
 4. You are ready to go!
